@@ -10,3 +10,7 @@ resource "vault_token" "token" {
     "local" = "terraform"
   }
 }
+
+resource "hcp_vault_cluster_admin_token" "token" {
+     cluster_id = "vault-plus"
+}

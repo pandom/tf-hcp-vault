@@ -12,6 +12,7 @@ terraform {
         source = "hashicorp/tfe"
         version = "0.36.1"
     }
+
   }
 }
 provider "vault" {
@@ -19,4 +20,5 @@ provider "vault" {
 }
 provider "random" {}
 provider "tfe" {}
+
 

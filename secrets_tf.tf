@@ -2,10 +2,15 @@
 data "tfe_organization" "burkey" {
     name = "burkey"
 }
+## Creates a random value
 
+resource "random_pet" "var_set" {
+  length = 3
+  separator = "-"
+}
 # # This creates the team in terraform cloud
 resource "tfe_team" "team" {
-  name = "vault-team-token"
+  name = "vault-${random_pet.var_set.id}"
   organization = data.tfe_organization.burkey.name
 }
 
