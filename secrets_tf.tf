@@ -7,6 +7,7 @@ resource "tfe_team" "team" {
 ## Creating the Vault Backend
 resource "vault_terraform_cloud_secret_backend" "tfc" {
   backend = "tfc"
+  token = var.tfe_token
 }
 
 resource "vault_terraform_cloud_secret_role" "this" {

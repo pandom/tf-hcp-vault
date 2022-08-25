@@ -3,3 +3,8 @@ variable "tfe_organization" {
     type = string
     description = "Organisation in Terraform Cloud"  
 }
+
+variable "tfe_token" {
+    type = "string"
+    description = "Token"
+}
