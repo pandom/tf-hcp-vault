@@ -1,0 +1,1 @@
+The `bootstrap` folder is used to generate a token in Vault. This is then passed to TFC by creating a variable set.
