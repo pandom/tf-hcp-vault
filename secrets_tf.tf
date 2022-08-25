@@ -1,7 +1,12 @@
+
+data "tfe_organization" "burkey" {
+    name = "burkey"
+}
+
 # # This creates the team in terraform cloud
 resource "tfe_team" "team" {
   name = "vault-team-token"
-  organization = var.tfe_organization
+  organization = data.tfe_organization.burkey.name
 }
 
 ## Creating the Vault Backend
