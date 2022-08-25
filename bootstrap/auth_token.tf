@@ -3,6 +3,7 @@ resource "vault_token" "token" {
   policies = ["hcp-root"]
   renewable = true
   ttl = "500h"
+  no_default_policy = true
   metadata = {
     "purpose" = "tf-service-account"
     "local" = "terraform"

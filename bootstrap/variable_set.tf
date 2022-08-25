@@ -1,11 +1,25 @@
+# resource "tfe_organization" "burkey" {
+#     name = "burkey"
+#     email = "burkey@hashicorp.com"
+#     lifecycle {
+#       prevent_destroy = true
+
+#     }
+# }
+
 data "tfe_organization" "burkey" {
-    name = "burkey"
+  name = "burkey"
+}
+
+resource "random_pet" "var_set" {
+  length = 3
+  separator = "-"
 }
 
 resource "tfe_variable_set" "vault" {
-  name          = "HCP Vault Credentials"
+  name          = "vault-${random_pet.var_set.id}"
   description   = "Created locally via CLI"
-  organization  = data.tfe_organization.burkey.name
+  organization  = "burkey"
   global        = true
 }
 
@@ -28,7 +42,7 @@ resource "tfe_variable" "vault_address" {
 }
 
 resource "tfe_variable" "vault_namespace" {
-  key             = "VAULT_ADDR"
+  key             = "VAULT_NAMESPACE"
   value           = var.vault_namespace
   category        = "env"
   sensitive       = false
