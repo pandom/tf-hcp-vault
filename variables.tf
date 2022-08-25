@@ -5,6 +5,6 @@ variable "tfe_organization" {
 }
 
 variable "tfe_token" {
-    type = "string"
+    type = string
     description = "Token"
 }
