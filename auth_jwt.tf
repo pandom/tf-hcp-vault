@@ -14,7 +14,7 @@ resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
   }
     role_type = "jwt"
     user_claim = "actor" 
-    token_ttl = "60m"
+    token_ttl = "3600"
     token_policies = [
         vault_policy.hcp_kv_read.name]
 }
