@@ -11,7 +11,8 @@ resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
     role_name = "packer-action"
     bound_claims = {
     "repositories" = "pandom/packer-ubuntu"
-  }
+    }
+    bound_audiences = ["sigstore"]
     role_type = "jwt"
     user_claim = "actor" 
     token_ttl = "3600"
