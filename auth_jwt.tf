@@ -6,7 +6,7 @@ resource "vault_jwt_auth_backend" "github" {
 }
 
 ### This requires a key-value mounted to secret/data/
-
+## Source: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-hashicorp-vault
 resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
     role_name = "packer-action"
     bound_claims = {
