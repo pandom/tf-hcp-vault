@@ -1,6 +1,6 @@
 resource "vault_jwt_auth_backend" "github" {
     description         = "Github JWT auth backend"
-    path                = "jwt"
+    path                = "gha"
     oidc_discovery_url  = "https://token.actions.githubusercontent.com"
     bound_issuer        = "https://token.actions.githubusercontent.com"
 }
