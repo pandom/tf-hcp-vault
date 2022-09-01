@@ -1,22 +1,22 @@
 terraform {
   required_providers {
     vault = {
-        source = "hashicorp/vault"
-        version = "3.8.2"
+      source  = "hashicorp/vault"
+      version = "3.8.2"
     }
     random = {
-        source = "hashicorp/random"
-        version = "3.3.2"
+      source  = "hashicorp/random"
+      version = "3.3.2"
     }
     tfe = {
-        source = "hashicorp/tfe"
-        version = "0.36.1"
+      source  = "hashicorp/tfe"
+      version = "0.36.1"
     }
 
   }
 }
 provider "vault" {
-#remove variables.
+  #remove variables.
 }
 provider "random" {}
 provider "tfe" {}
