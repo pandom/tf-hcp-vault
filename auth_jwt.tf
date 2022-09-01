@@ -3,6 +3,7 @@ resource "vault_jwt_auth_backend" "github" {
     path                = "gha"
     oidc_discovery_url  = "https://token.actions.githubusercontent.com"
     bound_issuer        = "https://token.actions.githubusercontent.com"
+    default_role = "packer-action"
 }
 
 ### This requires a key-value mounted to secret/data/
