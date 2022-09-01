@@ -1,16 +1,10 @@
 resource "vault_jwt_auth_backend" "github" {
   description        = "Github JWT auth backend"
-  path               = "gha"
-  oidc_discovery_url = "https://token.actions.githubusercontent.com"
-  bound_issuer       = "https://token.actions.githubusercontent.com"
-}
-
-resource "vault_jwt_auth_backend" "gh_actions" {
-  description        = "Github JWT auth backend"
   path               = "gh-actions"
   oidc_discovery_url = "https://token.actions.githubusercontent.com"
   bound_issuer       = "https://token.actions.githubusercontent.com"
 }
+
 
 ### This requires a key-value mounted to secret/data/
 ## Source: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-hashicorp-vault
