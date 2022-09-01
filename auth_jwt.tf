@@ -11,12 +11,13 @@ resource "vault_jwt_auth_backend" "github" {
 resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
   backend         = vault_jwt_auth_backend.github.path
   role_name       = "packer-action"
+  bound_subject = ""
   bound_audiences = ["https://github.com/pandom"]
   bound_claims = {
     "repository" = "pandom/gha-vault-jwt"
-    "ref"        = "refs/heads/main"
+    "ref"        = "refs/*"
   }
-  user_claim = "actor"
+  user_claim = "workflow"
   role_type  = "jwt"
   token_ttl  = "3600"
   token_policies = [
