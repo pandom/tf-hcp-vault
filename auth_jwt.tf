@@ -17,6 +17,7 @@ resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
     "repository" = "pandom/gha-vault-jwt"
     "ref"        = "refs/*"
   }
+  bound_claims_type = "glob"
   user_claim = "workflow"
   role_type  = "jwt"
   token_ttl  = "3600"
