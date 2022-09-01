@@ -2,7 +2,7 @@ resource "vault_jwt_auth_backend" "github" {
   description        = "Github JWT auth backend"
   oidc_discovery_url = "https://token.actions.githubusercontent.com"
   bound_issuer       = "https://token.actions.githubusercontent.com"
-  default_role = "packer-action"
+  default_role = "gha"
 }
 
 
