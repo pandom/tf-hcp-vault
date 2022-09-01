@@ -9,8 +9,7 @@ resource "vault_jwt_auth_backend" "github" {
 ## Source: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-hashicorp-vault
 resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
   backend         = vault_jwt_auth_backend.github.path
-  role_name       = "packer-action"
-  bound_subject = ""
+  role_name       = "gha"
   bound_audiences = ["https://github.com/pandom"]
   bound_claims = {
     "repository" = "pandom/gha-vault-jwt"
