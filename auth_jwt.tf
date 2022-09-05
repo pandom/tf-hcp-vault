@@ -21,4 +21,5 @@ resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
   token_ttl  = "3600"
   token_policies = [
   vault_policy.hcp_kv_read.name, "default"]
+  verbose_oidc_logging = true
 }
