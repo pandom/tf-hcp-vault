@@ -3,6 +3,9 @@ resource "vault_jwt_auth_backend" "github" {
   oidc_discovery_url = "https://token.actions.githubusercontent.com"
   bound_issuer       = "https://token.actions.githubusercontent.com"
   default_role = "gha"
+  tune = [ {
+    audit_non_hmac_response_keys = [ "error", "namespace" ]
+  } ]
 }
 
 
