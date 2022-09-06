@@ -4,7 +4,14 @@ resource "vault_jwt_auth_backend" "github" {
   bound_issuer       = "https://token.actions.githubusercontent.com"
   default_role = "gha"
   tune = [ {
+    allowed_response_headers = [ "value" ]
     audit_non_hmac_response_keys = [ "error", "namespace" ]
+    audit_non_hmac_request_keys = [ "error", "namespace" ]
+    default_lease_ttl = "3600"
+    listing_visibility = "hidden"
+    max_lease_ttl = "86400"
+    passthrough_request_headers = [ "" ]
+    token_type = "default-service"
   } ]
 }
 
