@@ -5,8 +5,8 @@ resource "vault_jwt_auth_backend" "github" {
   default_role = "gha"
   tune = [ {
     allowed_response_headers = [ "value" ]
-    audit_non_hmac_response_keys = [ "error", "namespace" ]
-    audit_non_hmac_request_keys = [ "error", "namespace" ]
+    audit_non_hmac_response_keys = [ "error", "namespace", "role" ]
+    audit_non_hmac_request_keys = [ "error", "namespace", "role" ]
     default_lease_ttl = "1h"
     listing_visibility = "hidden"
     max_lease_ttl = "1h"
@@ -23,7 +23,7 @@ resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
   role_name       = "gha"
   bound_audiences = ["https://github.com/pandom"]
   bound_claims = {
-    "repository" = "pandom/gha-vault-jwt"
+    "repository" = "pandom/packer-ubuntu"
     "ref"        = "refs/*"
   }
   bound_claims_type = "glob"
