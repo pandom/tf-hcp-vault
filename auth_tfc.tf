@@ -10,11 +10,12 @@ organization  = var.shared_tfe_organization
   email = "go@hashicorp.com"
 }
 ## Create Backend
-resource "vault_terraform_cloud_secret_backend" "test" {
-  backend     = "terraforms"
+resource "vault_terraform_cloud_secret_backend" "tfc" {
+  backend     = "terraform"
   description = "TFC Backend"
   token       = var.tfe_token
   namespace = "admin"
+  base_path = "tfc"
 }
 
 ## Creates Team
@@ -22,7 +23,6 @@ resource "tfe_team" "vsphere_read" {
   name = "vsphere_read"
   organization  = var.shared_tfe_organization
   #organization = var.tfe_organization
-  sso_team_id = "INSERT_TEAM_ID"
 }
 
 ## Create Role
