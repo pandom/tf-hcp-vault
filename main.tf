@@ -1,4 +1,10 @@
 terraform {
+    # cloud {
+    # organization = "burkey"
+    # workspaces {
+    #   name = "tf-hcp-vault"
+    # }
+  }
   required_providers {
     vault = {
       source  = "hashicorp/vault"
