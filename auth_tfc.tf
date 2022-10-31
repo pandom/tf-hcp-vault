@@ -1,33 +1,37 @@
 ### This could be a list that's iterated over. For each user..
 data "tfe_organization_membership" "burkey" {
-  organization  = var.tfe_organization
+  organization  = var.shared_tfe_organization
+  #organization  = var.tfe_organization
   email = "burkey@hashicorp.com"
 }
 data "tfe_organization_membership" "go" {
-  organization  = var.tfe_organization
+organization  = var.shared_tfe_organization
+  #organization  = var.tfe_organization
   email = "go@hashicorp.com"
 }
-
+## Create Backend
 resource "vault_terraform_cloud_secret_backend" "test" {
   backend     = "terraform"
   description = "TFC Backend"
   token       = var.tfe_token
 }
-
+## Create Role
 resource "vault_terraform_cloud_secret_role" "example" {
   backend      = vault_terraform_cloud_secret_backend.test.backend
   name         = "vsphere_read"
-  organization = "burkey"
+  organization  = var.shared_tfe_organization
+  #organization = var.tfe_organization
   team_id      = tfe_team.vsphere_read.id
   depends_on = [
     tfe_team.vsphere_read
   ]
 }
 
-## Creates Group
+## Creates Team
 resource "tfe_team" "vsphere_read" {
   name = "vsphere_read"
-  organization = var.tfe_organization
+  organization  = var.shared_tfe_organization
+  #organization = var.tfe_organization
   sso_team_id = "INSERT_TEAM_ID"
 }
 
