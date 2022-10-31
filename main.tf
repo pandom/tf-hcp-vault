@@ -20,7 +20,6 @@ terraform {
     }
 
   }
-}
 provider "vault" {
   #remove variables.
 }
