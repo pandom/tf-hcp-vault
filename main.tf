@@ -20,10 +20,10 @@ terraform {
     }
 
   }
+}
 provider "vault" {
   #remove variables.
 }
 provider "random" {}
 provider "tfe" {}
-}
 
