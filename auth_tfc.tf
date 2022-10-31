@@ -18,7 +18,7 @@ resource "vault_terraform_cloud_secret_role" "example" {
   backend      = vault_terraform_cloud_secret_backend.test.backend
   name         = "vsphere_read"
   organization = "burkey"
-  team_id      = tfe_team.vsphere_read.team_id
+  team_id      = tfe_team.vsphere_read.id
   depends_on = [
     tfe_team.vsphere_read
   ]
@@ -34,12 +34,12 @@ resource "tfe_team" "vsphere_read" {
 ## Assign Users to Group
 
 resource "tfe_team_organization_member" "burkey" {
-  team_id = tfe_team.vsphere_read
+  team_id = tfe_team.vsphere_read.id
   organization_membership_id = data.tfe_organization_membership.burkey.id
 }
 
 resource "tfe_team_organization_member" "go" {
-  team_id = tfe_team.vsphere_read
+  team_id = tfe_team.vsphere_read.id
   organization_membership_id = data.tfe_organization_membership.go.id
 }
 
