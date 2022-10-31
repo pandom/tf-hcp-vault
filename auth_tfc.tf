@@ -27,7 +27,7 @@ resource "tfe_team" "vsphere_read" {
 
 ## Create Role
 resource "vault_terraform_cloud_secret_role" "example" {
-  backend      = vault_terraform_cloud_secret_backend.test.backend
+  backend      = vault_terraform_cloud_secret_backend.tfc.backend
   name         = "vsphere_read"
   organization  = var.shared_tfe_organization
   #organization = var.tfe_organization
@@ -41,12 +41,12 @@ resource "vault_terraform_cloud_secret_role" "example" {
 
 
 
-resource "tfe_team" "vsphere_write" {
-  name = "vsphere_read"
-  organization  = var.shared_tfe_organization
-  #organization = var.tfe_organization
-  sso_team_id = "INSERT_TEAM_ID"
-}
+# resource "tfe_team" "vsphere_write" {
+#   name = "vsphere_read"
+#   organization  = var.shared_tfe_organization
+#   #organization = var.tfe_organization
+#   sso_team_id = "INSERT_TEAM_ID"
+# }
 
 ## Assign Users to Group
 
