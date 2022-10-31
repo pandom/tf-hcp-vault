@@ -35,12 +35,12 @@ resource "tfe_team" "vsphere_read" {
 
 resource "tfe_team_organization_member" "burkey" {
   team_id = tfe_team.vsphere_read
-  organization_membership_id = tfe_organization_membership.burkey.id
+  organization_membership_id = data.tfe_organization_membership.burkey.id
 }
 
 resource "tfe_team_organization_member" "go" {
   team_id = tfe_team.vsphere_read
-  organization_membership_id = tfe_organization_membership.go.id
+  organization_membership_id = data.tfe_organization_membership.go.id
 }
 
 
