@@ -12,8 +12,8 @@ organization  = var.shared_tfe_organization
 ## Create Backend
 resource "vault_terraform_cloud_secret_backend" "tfc_backend" {
   backend     = "terraform"
-  description = "TFC Backend"
-  token       = var.tfe_token
+  description = "TFC Backend for ${var.shared_tfe_organization}"
+  #token       = var.tfe_token
 }
 
 ## Creates Team
