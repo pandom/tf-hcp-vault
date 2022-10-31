@@ -15,7 +15,6 @@ resource "vault_terraform_cloud_secret_backend" "tfc" {
   description = "TFC Backend"
   token       = var.tfe_token
   namespace = "admin"
-  base_path = "tfc"
 }
 
 ## Creates Team
