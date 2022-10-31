@@ -4,7 +4,7 @@ terraform {
     # workspaces {
     #   name = "tf-hcp-vault"
     # }
-  }
+  
   required_providers {
     vault = {
       source  = "hashicorp/vault"
@@ -25,5 +25,5 @@ provider "vault" {
 }
 provider "random" {}
 provider "tfe" {}
-
+}
 
