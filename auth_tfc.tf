@@ -11,10 +11,20 @@ organization  = var.shared_tfe_organization
 }
 ## Create Backend
 resource "vault_terraform_cloud_secret_backend" "test" {
-  backend     = "terraform"
+  backend     = "terraforms"
   description = "TFC Backend"
   token       = var.tfe_token
+  namespace = "admin"
 }
+
+## Creates Team
+resource "tfe_team" "vsphere_read" {
+  name = "vsphere_read"
+  organization  = var.shared_tfe_organization
+  #organization = var.tfe_organization
+  sso_team_id = "INSERT_TEAM_ID"
+}
+
 ## Create Role
 resource "vault_terraform_cloud_secret_role" "example" {
   backend      = vault_terraform_cloud_secret_backend.test.backend
@@ -27,8 +37,11 @@ resource "vault_terraform_cloud_secret_role" "example" {
   ]
 }
 
-## Creates Team
-resource "tfe_team" "vsphere_read" {
+## Map Role and Policy
+
+
+
+resource "tfe_team" "vsphere_write" {
   name = "vsphere_read"
   organization  = var.shared_tfe_organization
   #organization = var.tfe_organization
