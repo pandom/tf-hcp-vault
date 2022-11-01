@@ -31,7 +31,7 @@ resource "tfe_variable" "vault_token" {
   description     = "Vault Token"
   variable_set_id = tfe_variable_set.vault.id
 }
-resource "tfe_variable" "vault_token" {
+resource "tfe_variable" "vault_tf_token" {
   key             = "VAULT_TOKEN"
   value           = vault_token.token.client_token
   category        = "terraform"
