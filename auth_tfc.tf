@@ -1,8 +1,9 @@
 
-resource "tfe_organization_membership" "burkey" {
-  organization = var.tfe_organization
-  username = "burkey"
+data "tfe_organization_membership" "test" {
+  organization  = "burkey"
+  email = "burkey@hashicorp.com"
 }
+
 # data "tfe_organization_membership" "go" {
 #   organization = data.tfe_organization.org.name
 #   #email = "go@hashicorp.com"
