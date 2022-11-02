@@ -1,10 +1,12 @@
 data "tfe_organization_membership" "burkey" {
   organization  = var.tfe_organization
-  email = "burkey@hashicorp.com"
+#   email = "burkey@hashicorp.com"
+  user = burkey
 }
 data "tfe_organization_membership" "go" {
   organization  = var.tfe_organization
-  email = "go@hashicorp.com"
+#   email = "go@hashicorp.com"
+user = go
 }
 
 resource "vault_terraform_cloud_secret_backend" "test" {
