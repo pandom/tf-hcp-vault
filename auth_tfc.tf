@@ -35,6 +35,11 @@ resource "tfe_team" "vsphere_read" {
   organization = var.tfe_organization
   sso_team_id  = "INSERT_TEAM_ID"
 }
+resource "tfe_team" "vsphere_write" {
+  name = "vsphere_write"
+  organization = var.tfe_organization
+  sso_team_id  = "INSERT_TEAM_ID"
+}
 
 # ## Assign Users to Group
 
