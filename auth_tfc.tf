@@ -1,17 +1,13 @@
-
-data "tfe_organization_members" "org" {
-  organization  = "burkey"
+data "tfe_organization_membership" "burkey" {
+  organization = var.tfe_organization
+  #email = "burkey@hashicorp.com"
+  username = "burkey"
 }
-
-output "test" {
-  value = data.tfe_organization_members.org.members
+data "tfe_organization_membership" "go" {
+  organization = var.tfe_organization
+  #email = "go@hashicorp.com"
+  username = "go"
 }
-
-# data "tfe_organization_membership" "go" {
-#   organization = data.tfe_organization.org.name
-#   #email = "go@hashicorp.com"
-#   username = "go"
-# }
 
 # resource "vault_terraform_cloud_secret_backend" "test" {
 #   backend     = "terraform"
@@ -33,12 +29,10 @@ output "test" {
 resource "tfe_team" "vsphere_read" {
   name         = "vsphere_read"
   organization = var.tfe_organization
-  sso_team_id  = "INSERT_TEAM_ID"
 }
 resource "tfe_team" "vsphere_write" {
   name = "vsphere_write"
   organization = var.tfe_organization
-  #sso_team_id  = "INSERT_TEAM_ID"
 }
 
 # ## Assign Users to Group
