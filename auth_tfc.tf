@@ -36,28 +36,12 @@ resource "vault_terraform_cloud_secret_role" "example" {
 }
 
 ## Map Role and Policy
-
-
-
-# resource "tfe_team" "vsphere_write" {
-#   name = "vsphere_read"
-#   organization  = var.tfe_organization
-#   #organization = var.tfe_organization
-#   sso_team_id = "INSERT_TEAM_ID"
-# }
-
 ## Assign Users to Group
 
-resource "tfe_team_organization_member" "burkey" {
-  team_id = tfe_team.vsphere_read.id
-  organization_membership_id = data.tfe_organization_membership.burkey.id
+resource "tfe_team_organization_members" "vsphere_read" {
+      team_id      = tfe_team.vsphere_read.id
+      organization_membership_ids = [
+        data.tfe_organization_membership.burkey.id,
+        data.tfe_organization_membership.go.id
+      ]
 }
-
-resource "tfe_team_organization_member" "go" {
-  team_id = tfe_team.vsphere_read.id
-  organization_membership_id = data.tfe_organization_membership.go.id
-}
-
-
-
-
