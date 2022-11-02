@@ -4,10 +4,20 @@ data "tfe_organization_membership" "burkey" {
   #organization  = var.tfe_organization
   email = "burkey@hashicorp.com"
 }
+
 data "tfe_organization_membership" "go" {
 organization  = var.tfe_organization
   #organization  = var.tfe_organization
   email = "go@hashicorp.com"
+}
+
+
+data "tfe_organization" "burkey" {
+  name = var.tfe_organization
+}
+
+data "tfe_organization_members" "burkey" {
+  organization = data.tfe_organization.burkey
 }
 # ## Create Backend
 # resource "vault_terraform_cloud_secret_backend" "tfc_backend" {
@@ -24,7 +34,7 @@ resource "tfe_team" "vsphere_read" {
 
 resource "tfe_team_organization_member" "burkey" {
     team_id = tfe_team.vsphere_read.id
-    organization_membership_id = data.tfe_organization_membership.burkey.id
+    tfe_team_member = data.tfe_organization_membership.burkey.id
 }
 
 # ## Create Role
