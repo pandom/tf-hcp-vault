@@ -2,17 +2,17 @@ resource "vault_jwt_auth_backend" "github" {
   description        = "Github JWT auth backend"
   oidc_discovery_url = "https://token.actions.githubusercontent.com"
   bound_issuer       = "https://token.actions.githubusercontent.com"
-  default_role = "gha"
-  tune = [ {
-    allowed_response_headers = [ "value" ]
-    audit_non_hmac_response_keys = [ "error", "namespace", "role" ]
-    audit_non_hmac_request_keys = [ "error", "namespace", "role" ]
-    default_lease_ttl = "1h"
-    listing_visibility = "hidden"
-    max_lease_ttl = "1h"
-    passthrough_request_headers = [ "" ]
-    token_type = "default-service"
-  } ]
+  default_role       = "gha"
+  tune = [{
+    allowed_response_headers     = ["value"]
+    audit_non_hmac_response_keys = ["error", "namespace", "role"]
+    audit_non_hmac_request_keys  = ["error", "namespace", "role"]
+    default_lease_ttl            = "1h"
+    listing_visibility           = "hidden"
+    max_lease_ttl                = "1h"
+    passthrough_request_headers  = [""]
+    token_type                   = "default-service"
+  }]
 }
 
 
@@ -27,9 +27,9 @@ resource "vault_jwt_auth_backend_role" "jwt_hcp_role" {
     "ref"        = "refs/*"
   }
   bound_claims_type = "glob"
-  user_claim = "workflow"
-  role_type  = "jwt"
-  token_ttl  = "3600"
+  user_claim        = "workflow"
+  role_type         = "jwt"
+  token_ttl         = "3600"
   token_policies = [
   vault_policy.hcp_kv_read.name, "default"]
   verbose_oidc_logging = true
