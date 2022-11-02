@@ -10,7 +10,7 @@ variable "shared_tfe_organization" {
   description = "Organisation in Terraform Cloud"
 }
 
-# variable "tfe_token" {
-#   type        = string
-#   description = "Token"
-# }
+variable "tfe_token" {
+  type        = string
+  description = "Token"
+}
