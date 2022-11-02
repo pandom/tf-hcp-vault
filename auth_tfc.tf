@@ -34,7 +34,7 @@ resource "tfe_team" "vsphere_read" {
 
 resource "tfe_team_organization_member" "burkey" {
     team_id = tfe_team.vsphere_read.id
-    tfe_team_member = data.tfe_organization_membership.burkey.id
+    organization_membership_id = data.tfe_organization_membership.burkey.id 
 }
 
 # ## Create Role
