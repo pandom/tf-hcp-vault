@@ -1,24 +1,16 @@
 # ### This could be a list that's iterated over. For each user..
 data "tfe_organization_membership" "burkey" {
-  organization  = var.tfe_organization
+  organization  = "burkey"
   #organization  = var.tfe_organization
-  email = "burkey@hashicorp.com"
+  username = "burkey"
 }
 
 data "tfe_organization_membership" "go" {
-organization  = var.tfe_organization
+organization  = "burkey"
   #organization  = var.tfe_organization
-  email = "go@hashicorp.com"
+  username = "go"
 }
 
-
-data "tfe_organization" "burkey" {
-  name = var.tfe_organization
-}
-
-data "tfe_organization_members" "burkey" {
-  organization = data.tfe_organization.burkey
-}
 # ## Create Backend
 # resource "vault_terraform_cloud_secret_backend" "tfc_backend" {
 #   backend     = "terraform"
@@ -35,6 +27,10 @@ resource "tfe_team" "vsphere_read" {
 resource "tfe_team_organization_member" "burkey" {
     team_id = tfe_team.vsphere_read.id
     organization_membership_id = data.tfe_organization_membership.burkey.id 
+}
+resource "tfe_team_organization_member" "go" {
+    team_id = tfe_team.vsphere_read.id
+    organization_membership_id = data.tfe_organization_membership.go.id 
 }
 
 # ## Create Role
