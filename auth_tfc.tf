@@ -1,7 +1,10 @@
 
-data "tfe_organization_membership" "test" {
+data "tfe_organization_members" "org" {
   organization  = "burkey"
-  email = "burkey@hashicorp.com"
+}
+
+output "test" {
+  value = data.tfe_organization_members.org.members
 }
 
 # data "tfe_organization_membership" "go" {
