@@ -1,11 +1,8 @@
-# data "tfe_organization" "org" {
-#   name = var.tfe_organization
-# }
-# data "tfe_organization_membership" "burkey" {
-#   organization = data.tfe_organization.org.name
-#   #email = "burkey@hashicorp.com"
-#   username = "burkey"
-# }
+
+data "tfe_organization_membership" "burkey" {
+  organization = var.tfe_organization
+  email = "burkey@hashicorp.com"
+}
 # data "tfe_organization_membership" "go" {
 #   organization = data.tfe_organization.org.name
 #   #email = "go@hashicorp.com"
@@ -28,12 +25,12 @@
 #   ]
 # }
 
-# ## Creates Group
-# resource "tfe_team" "vsphere_read" {
-#   name         = "vsphere_read"
-#   organization = var.tfe_organization
-#   sso_team_id  = "INSERT_TEAM_ID"
-# }
+## Creates Group
+resource "tfe_team" "vsphere_read" {
+  name         = "vsphere_read"
+  organization = var.tfe_organization
+  sso_team_id  = "INSERT_TEAM_ID"
+}
 
 # ## Assign Users to Group
 
