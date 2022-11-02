@@ -38,17 +38,17 @@ resource "tfe_team" "vsphere_read" {
 resource "tfe_team" "vsphere_write" {
   name = "vsphere_write"
   organization = var.tfe_organization
-  sso_team_id  = "INSERT_TEAM_ID"
+  #sso_team_id  = "INSERT_TEAM_ID"
 }
 
 # ## Assign Users to Group
 
-# resource "tfe_team_organization_member" "burkey" {
-#   team_id                    = tfe_team.vsphere_read.id
-#   organization_membership_id = data.tfe_organization_membership.burkey.id
-# }
+resource "tfe_team_organization_member" "burkey" {
+  team_id                    = tfe_team.vsphere_read.id
+  organization_membership_id = data.tfe_organization_membership.burkey.id
+}
 
-# resource "tfe_team_organization_member" "go" {
-#   team_id                    = tfe_team.vsphere_read.id
-#   organization_membership_id = data.tfe_organization_membership.go.id
-# }
+resource "tfe_team_organization_member" "go" {
+  team_id                    = tfe_team.vsphere_read.id
+  organization_membership_id = data.tfe_organization_membership.go.id
+}
