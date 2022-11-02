@@ -1,5 +1,5 @@
 variable "tfe_organization" {
-  default     = "burkey"
+  default     = "new-stack"
   type        = string
   description = "Organisation in Terraform Cloud"
 }
